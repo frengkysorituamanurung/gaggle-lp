@@ -14,6 +14,7 @@ import {
   PanelLeft,
   ShieldCheck,
   Sparkles,
+  Sun,
   Terminal,
   X,
   Zap,
@@ -32,6 +33,27 @@ export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem('theme')
+    const initial: 'light' | 'dark' =
+      stored === 'light' || stored === 'dark'
+        ? stored
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+    setTheme(initial)
+  }, [])
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (theme === 'dark') root.classList.add('dark')
+    else root.classList.remove('dark')
+    try {
+      window.localStorage.setItem('theme', theme)
+    } catch {}
+  }, [theme])
   const menuRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
 
@@ -104,6 +126,9 @@ export default function Page() {
             <a href="#community" className={navClass('community')} onClick={() => setMenuOpen(false)}>Community</a>
             <a className="nav-github" href="https://github.com/frengkysorituamanurung/gaggle" target="_blank" rel="noreferrer"><GitBranch size={15} /> GitHub <ArrowUpRight size={13} /></a>
             <a className="button button-small" href="#get-started" onClick={() => setMenuOpen(false)}>Get started <ChevronRight size={15} /></a>
+            <button className="theme-toggle" onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))} aria-label="Toggle color theme" aria-pressed={theme === 'dark'} suppressHydrationWarning>
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
           </div>
         </nav>
       </header>
