@@ -229,7 +229,7 @@ export default function Page() {
             </a>
             <button
               className="theme-toggle"
-              onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+              onClick={() => { setTheme((t) => (t === 'dark' ? 'light' : 'dark')); setMenuOpen(false) }}
               aria-label="Toggle color theme"
               aria-pressed={theme === 'dark'}
               suppressHydrationWarning

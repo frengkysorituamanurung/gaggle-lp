@@ -45,6 +45,8 @@ section, main { scroll-margin-top: 84px; }
 .dark .theme-toggle .icon-sun { display: block; }
 .dark .theme-toggle .icon-moon { display: none; }
 .theme-toggle:hover { background: var(--soft); }
+.theme-toggle:focus, .theme-toggle:focus-visible { outline: none; box-shadow: none; }
+.theme-toggle:active { transform: scale(.96); }
 .nav-links a:not(.button):hover, .footer a:hover, .text-link:hover { color: var(--ink); }
 .nav-github { display: inline-flex; align-items: center; gap: 5px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 18px; border-radius: 3px; background: var(--foreground); color: var(--background); font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
