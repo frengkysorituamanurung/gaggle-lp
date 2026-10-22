@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
   ArrowUp,
   ArrowUpRight,  Check,
@@ -29,27 +29,22 @@ const features = [
   { icon: ShieldCheck, title: 'Deliberate control', copy: 'Keep decisions about your environment and shared context visible instead of hidden behind the interface.' },
 ]
 
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
+
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
   const [showBackToTop, setShowBackToTop] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  useEffect(() => {
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'light'
     const stored = window.localStorage.getItem('theme')
-    const initial: 'light' | 'dark' =
-      stored === 'light' || stored === 'dark'
-        ? stored
-        : window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
-    setTheme(initial)
-  }, [])
+    if (stored === 'light' || stored === 'dark') return stored
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = document.documentElement
-    if (theme === 'dark') root.classList.add('dark')
-    else root.classList.remove('dark')
+    root.classList.toggle('dark', theme === 'dark')
     try {
       window.localStorage.setItem('theme', theme)
     } catch {}
@@ -127,7 +122,8 @@ export default function Page() {
             <a className="nav-github" href="https://github.com/frengkysorituamanurung/gaggle" target="_blank" rel="noreferrer"><GitBranch size={15} /> GitHub <ArrowUpRight size={13} /></a>
             <a className="button button-small" href="#get-started" onClick={() => setMenuOpen(false)}>Get started <ChevronRight size={15} /></a>
             <button className="theme-toggle" onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))} aria-label="Toggle color theme" aria-pressed={theme === 'dark'} suppressHydrationWarning>
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              <Sun size={18} className="icon-sun" />
+              <Moon size={18} className="icon-moon" />
             </button>
           </div>
         </nav>

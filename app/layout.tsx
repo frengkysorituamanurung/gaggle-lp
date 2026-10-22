@@ -81,29 +81,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme'); if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';} if(t==='dark') document.documentElement.classList.add('dark');}catch(e){}})();`,
-          }}
-        />
-      </head>
       <body className="antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'SoftwareApplication',
-              name: 'Gaggle',
-              applicationCategory: 'DeveloperApplication',
-              operatingSystem: 'macOS, Linux',
-              description: 'An open-source, local-first personal AI assistant designed around your workspace, projects, and everyday development work.',
-              url: 'https://gaggle.frengky.xyz',
-              offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            }),
-          }}
-        />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

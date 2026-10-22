@@ -40,6 +40,10 @@ section, main { scroll-margin-top: 84px; }
 .brand-mark { display: flex; gap: 2px; color: var(--ink); transform: rotate(-12deg); }
 .nav-links { display: flex; align-items: center; gap: 28px; font-size: 13px; color: var(--muted); }
 .theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--foreground); cursor: pointer; transition: background .2s; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+.dark .theme-toggle .icon-sun { display: block; }
+.dark .theme-toggle .icon-moon { display: none; }
 .theme-toggle:hover { background: var(--soft); }
 .nav-links a:not(.button):hover, .footer a:hover, .text-link:hover { color: var(--ink); }
 .nav-github { display: inline-flex; align-items: center; gap: 5px; }
