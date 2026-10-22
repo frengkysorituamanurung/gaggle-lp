@@ -115,10 +115,10 @@ export default function Page() {
             {menuOpen ? <X size={20} /> : <Menu size={20} />}<span className="sr-only">Toggle navigation</span>
           </button>
           <div id="main-menu" className={`nav-links ${menuOpen ? 'is-open' : ''}`} ref={menuRef}>
-            <a href="#product" className={navClass('product')} onClick={() => setMenuOpen(false)}>Product</a>
-            <a href="#features" className={navClass('features')} onClick={() => setMenuOpen(false)}>Features</a>
-            <a href="#how-it-works" className={navClass('how-it-works')} onClick={() => setMenuOpen(false)}>How it works</a>
-            <a href="#community" className={navClass('community')} onClick={() => setMenuOpen(false)}>Community</a>
+            <a href="#product" className={navClass('product')} aria-current={activeSection === 'product' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>Product</a>
+            <a href="#features" className={navClass('features')} aria-current={activeSection === 'features' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>Features</a>
+            <a href="#how-it-works" className={navClass('how-it-works')} aria-current={activeSection === 'how-it-works' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="#community" className={navClass('community')} aria-current={activeSection === 'community' ? 'page' : undefined} onClick={() => setMenuOpen(false)}>Community</a>
             <a className="nav-github" href="https://github.com/frengkysorituamanurung/gaggle" target="_blank" rel="noreferrer"><GitBranch size={15} /> GitHub <ArrowUpRight size={13} /></a>
             <a className="button button-small" href="#get-started" onClick={() => setMenuOpen(false)}>Get started <ChevronRight size={15} /></a>
             <button className="theme-toggle" onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))} aria-label="Toggle color theme" aria-pressed={theme === 'dark'} suppressHydrationWarning>
