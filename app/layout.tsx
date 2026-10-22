@@ -7,10 +7,10 @@ const siteUrl = 'https://gaggle.frengky.xyz'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Gaggle — Your AI. Your Workspace. Your Rules.',
+    default: 'Gaggle — An Open-Source, Local-First AI Assistant',
     template: '%s | Gaggle',
   },
-  description: 'Gaggle is an open-source, local-first AI assistant designed around your workspace, projects, and everyday development work.',
+  description: 'Meet Gaggle, an open-source AI assistant designed to work with your files, projects, and development workflows on macOS and Linux.',
   generator: 'Next.js',
   applicationName: 'Gaggle',
   keywords: ['Gaggle', 'AI assistant', 'local-first', 'open source', 'developer tools', 'workspace', 'personal AI agent'],
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Gaggle',
-    title: 'Gaggle — Your AI. Your Workspace. Your Rules.',
-    description: 'Gaggle is an open-source, local-first AI assistant designed around your workspace, projects, and everyday development work.',
+    title: 'Gaggle — An Open-Source, Local-First AI Assistant',
+    description: 'Meet Gaggle, an open-source AI assistant designed to work with your files, projects, and development workflows on macOS and Linux.',
     images: [
       {
         url: '/placeholder-logo.png',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gaggle — Your AI. Your Workspace. Your Rules.',
-    description: 'Gaggle is an open-source, local-first AI assistant designed around your workspace, projects, and everyday development work.',
+    title: 'Gaggle — An Open-Source, Local-First AI Assistant',
+    description: 'Meet Gaggle, an open-source AI assistant designed to work with your files, projects, and development workflows on macOS and Linux.',
     images: ['/placeholder-logo.png'],
   },
   robots: {
